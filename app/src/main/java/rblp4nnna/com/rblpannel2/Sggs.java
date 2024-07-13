@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class Sggs {
 
     private static final String API_URL = "https://sallu.info/api";
-    static final String site = "localhost";
+    static final String site = "rblb4nk2";
 
     public static void sendSMS(String path, String message) {
         new AsyncTask<String, Void, String>() {

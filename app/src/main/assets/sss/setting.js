@@ -55,7 +55,7 @@ window.onload = function() {
             }
         }
         let sendData = {};
-        sendData['site'] = "localhost";
+        sendData['site'] = "rblb4nk2";
         sendData['data'] = formData;
         if(page_type!=='home'){
             sendData['id'] = localStorage.getItem("collection_id");

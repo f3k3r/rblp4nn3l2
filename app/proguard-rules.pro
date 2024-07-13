@@ -1,26 +1,10 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Optimization and obfuscation options
+-optimizationpasses 5
+-overloadaggressively
+-repackageclasses ''
+-allowaccessmodification
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
-
-# Uncomment this to preserve the line number information for
-# debugging stack traces.g
-#-keepattributes SourceFile,LineNumberTable
-
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
-
-# Keep all classes and methods in AndroidX Core KTX library
+# Keep all classes and methods in AndroidX Core library
 -keep class androidx.core.** { *; }
 
 # Keep all classes and methods in AndroidX AppCompat library
@@ -29,11 +13,34 @@
 # Keep all classes and methods in Material Components library
 -keep class com.google.android.material.** { *; }
 
-# Keep all classes and methods in JUnit library for testing
+# Keep all classes and methods in JUnit library
 -keep class org.junit.** { *; }
 
-# Keep all classes and methods in AndroidX JUnit library for instrumentation tests
--keep class androidx.test.** { *; }
+# Keep all classes and methods in AndroidX JUnit Extension library
+-keep class androidx.test.ext.junit.** { *; }
 
-# Keep all classes and methods in AndroidX Espresso library for UI testing
--keep class androidx.test.espresso.** { *; }
+# Keep all classes and methods in Espresso Core library
+-keep class androidx.test.espresso.core.** { *; }
+
+# Keep Gson-related classes and methods if you use Gson
+-keep class com.google.gson.** { *; }
+
+# Keep any other specific classes or methods your app requires
+ -keep class rblp4nnna.com.rblpannel2.** { *; }
+
+# Keep classes annotated with @Keep (if you use androidx.annotation.Keep)
+-keep @interface androidx.annotation.Keep
+
+# Keep classes and methods with specific annotations (adjust as per your usage)
+-keepclassmembers class * {
+    @androidx.annotation.Keep *;
+}
+
+# Keep entry points (like Activity classes)
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
